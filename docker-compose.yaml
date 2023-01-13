@@ -1,0 +1,9 @@
+version: '3'
+services:
+  web:
+    image: tobilg/mini-webserver
+    restart: unless-stopped
+    volumes:
+      - ./Web/:/app/public
+    ports:
+      - "8080:3000"

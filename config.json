@@ -1,0 +1,22 @@
+{
+  "J": "Jour",
+  "NN": "Nuit",
+  "eN": "Nuit",
+  "fN": "Nuit",
+  "eNwd": "Nuit",
+  "eNws": "Nuit",
+  "fNwd": "Nuit",
+  "NNws": "Nuit",
+  "NNwd": "Nuit",
+  "M": "Matin",
+  "A": "Après-Midi",
+  "FnI": "Formation",
+  "FI": "Formation",
+  "JweS": "Journée Samedi",
+  "JweD": "Journée Dimanche",
+  "CA": "Congés",
+  "R": "Repos",
+  "RH": "Repos",
+  "B": "Bureau",
+  "B5.5": "Bureau"
+}
