@@ -13,7 +13,7 @@ Use the file "config.json" to set how to rename events.
 
 2. Run the script using cron task
 
-> 0 * * * * /usr/bin/python3 /path/to/Prose2Human/Calendar.py
+> 0 * * * * /usr/bin/python3 /path/to/Prose2Human/process.py
 
 3. Run the command to lunch the docker service
 
