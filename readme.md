@@ -23,6 +23,12 @@ Use the file "config.json" to set how to rename events.
 
 > http://localhost:8080/calendar.ics
 
+## How to use it
+1. Put your .ics in ./toProcess and wait for processing.
+
+2. Add to your devices the .ics this subscription :
+> http(s)://<your ip or FQDN>/Calendar.ics
+
 ## Note
 
 Make sure that python3 and docker are installed on your machine.
