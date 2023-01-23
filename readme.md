@@ -1,5 +1,4 @@
 # Prose To Human
-
 A python script that takes .ics calendar files as input, renames the events and makes the calendar available via a web server so that it can be synchronized with users' calendar applications.
 This script works perfectly with Agiletime used by my company for some teams.
 
@@ -30,14 +29,19 @@ Use the file "config.json" to set how to rename events.
 > http(s)://<your ip or FQDN>/Calendar.ics
 
 ## Note
-
 Make sure that python3 and docker are installed on your machine.
-Contact
 
+
+## ToDo
+- Error management when a event name is not listed in config file.
+- Improve logs quality
+- Everything in docker, event cron execution or switch to a process.
+
+## Contact
 If you have any questions or issues, please contact me with this repo.
 
-## License
 
+## License
 Do whatever you want, I don't care !
 
 Thank you for using Prose to Human!
