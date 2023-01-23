@@ -11,7 +11,7 @@ def listdir_nohidden(path):
 def clean_processing():
     # Empty processing failure
     folder = os.path.join(absolute_path, 'Processing/')
-    for filename in os.listdir(folder):
+    for filename in listdir_nohidden(folder):
         file_path = os.path.join(folder, filename)
         try:
             if os.path.isfile(file_path) or os.path.islink(file_path):
