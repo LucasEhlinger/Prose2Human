@@ -1,8 +1,7 @@
-import os, shutil
-import re
+import os, shutil, re, json, glob
 from datetime import datetime
-import json
-import glob
+
+absolute_path = os.path.dirname(__file__)
 
 
 def listdir_nohidden(path):
@@ -11,7 +10,7 @@ def listdir_nohidden(path):
 
 def clean_processing():
     # Empty processing failure
-    folder = './Processing/'
+    folder = os.path.join(absolute_path, 'Processing/')
     for filename in os.listdir(folder):
         file_path = os.path.join(folder, filename)
         try:
@@ -26,7 +25,7 @@ def clean_processing():
 clean_processing()
 
 # Copy calendars to Processing
-toProcess = listdir_nohidden("./toProcess/")
+toProcess = listdir_nohidden(os.path.join(absolute_path, 'toProcess/'))
 if len(toProcess) == 0:
     print("Nothing to process")
     exit(0)
@@ -43,20 +42,21 @@ if not re.match(r".+\.ics", files[0]):
     exit(0)
 
 # copy in history with datetime_before sufix
-shutil.copyfile(files[0], "./History/Import_" + datetime.now().strftime("%Y_%m_%d@%H:%M:%S") + ".ics")
+shutil.copyfile(files[0],
+                os.path.join(absolute_path, "History/Import_" + datetime.now().strftime("%Y_%m_%d@%H:%M:%S") + ".ics"))
 
 # move .ics to Processing
-shutil.move(files[0], "Processing/Calendar.ics")
+shutil.move(files[0], os.path.join(absolute_path, "Processing/Calendar.ics"))
 
 # loading configuration
 # Opening JSON file
-with open('config.json') as json_file:
+with open(os.path.join(absolute_path, 'config.json')) as json_file:
     config = json.load(json_file)
 
 # rename elements in .ics folowing config.json file
 regex = r"SUMMARY;LANGUAGE=fr:(.+)"
-with open('./Processing/Result.ics', 'a') as output:
-    with open('./Processing/Calendar.ics') as WIP:
+with open(os.path.join(absolute_path, 'Processing/Result.ics'), 'a') as output:
+    with open(os.path.join(absolute_path, 'Processing/Calendar.ics')) as WIP:
         while True:
             line = WIP.readline()
             if not line:
@@ -71,12 +71,13 @@ output.close()
 print("EOF")
 
 # copy in history with datetime_after suffix
-shutil.copyfile('./Processing/Result.ics',
-                "./History/Processed_" + datetime.now().strftime("%Y_%m_%d@%H:%M:%S") + ".ics")
+shutil.copyfile(os.path.join(absolute_path, 'Processing/Result.ics'),
+                os.path.join(absolute_path,
+                             "History/Processed_" + datetime.now().strftime("%Y_%m_%d@%H:%M:%S") + ".ics"))
 
 # move in Web with rename of calendar.ics
 
-shutil.copyfile('./Processing/Result.ics', "./Web/Calendar.ics")
+shutil.copyfile(os.path.join(absolute_path, 'Processing/Result.ics'), os.path.join(absolute_path, "Web/Calendar.ics"))
 
 # delete files in ToProcess
 clean_processing()
