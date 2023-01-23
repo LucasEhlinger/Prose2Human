@@ -62,8 +62,9 @@ with open('./Processing/Result.ics', 'a') as output:
             if not line:
                 break
             match = re.match(regex, line)
-            if match:
+            if match and match.groups()[0] in config:
                 line = re.sub(regex, "SUMMARY;LANGUAGE=fr:" + config[match.groups()[0]], line)
+
             output.writelines(line)
     WIP.close()
 output.close()
