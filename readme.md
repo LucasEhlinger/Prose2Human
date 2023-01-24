@@ -12,7 +12,7 @@ Use the file "config.json" to set how to rename events.
 
 2. Run the script using cron task
 
-> 0 * * * * /usr/bin/python3 /path/to/Prose2Human/process.py
+> 0 * * * * /usr/bin/python3 /path/to/Prose2Human/process.py >> /path/to/your>Logs>file.log 2>&1
 
 3. Run the command to lunch the docker service
 
@@ -33,9 +33,7 @@ Make sure that python3 and docker are installed on your machine.
 
 
 ## ToDo
-- Error management when a event name is not listed in config file.
-- Improve logs quality
-- Everything in docker, event cron execution or switch to a process.
+- Everything in docker, even cron execution or switch to a process.
 
 ## Contact
 If you have any questions or issues, please contact me with this repo.
